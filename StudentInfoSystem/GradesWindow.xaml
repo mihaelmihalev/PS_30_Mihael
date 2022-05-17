@@ -1,0 +1,19 @@
+﻿<Window x:Class="StudentInfoSystem.GradesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentInfoSystem"
+        mc:Ignorable="d"
+        Title="Grades" Height="450" Width="800">
+    
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Misho\Desktop\6 semestur\Programni sredi upr\PS_30_Mihael_Mihalev\StudentInfoSystem\background.png"/>
+        </Grid.Background>
+        <DataGrid Name="gradeData" AutoGenerateColumns="True" Margin="10,10,449,258" BorderBrush="#FF32D411"  />
+
+        
+    </Grid>
+</Window>
