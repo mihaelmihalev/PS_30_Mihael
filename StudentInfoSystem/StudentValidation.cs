@@ -17,7 +17,7 @@ namespace StudentInfoSystem
 
             List<Student> students = StudentData.TestStudents;
 
-            Student student = (from s in students where s.facultyNumber.Equals(user.FacNum) select s).FirstOrDefault();
+            Student student = (from s in students where s.FacultyNumber.Equals(user.FacNum) select s).FirstOrDefault();
 
             if (student == null)
             {

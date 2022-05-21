@@ -13,7 +13,7 @@
             <ColumnDefinition Width="230" />
         </Grid.ColumnDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Misho\Desktop\6 semestur\Programni sredi upr\PS_30_Mihael_Mihalev_exercise_3\Expenselt\watermark.png"/>
+            <ImageBrush ImageSource="C:\Users\test\source\repos\PS_30_Mihael\Expenselt\watermark.jpeg"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -8,7 +8,7 @@
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Misho\Desktop\6 semestur\Programni sredi upr\PS_30_Mihael_Mihalev\StudentInfoSystem\backgroundLogin.png"/>
+            <ImageBrush ImageSource="C:\Users\test\source\repos\PS_30_Mihael\StudentInfoSystem\backgroundLogin.png"/>
         </Grid.Background>
         <GroupBox Header="Login" Margin="0,70,0,46" Width="512" HorizontalAlignment="Center" BorderBrush="#FF4DE40B" >
             <Grid Margin="0,0,-12,0" Height="184">
@@ -19,9 +19,9 @@
                 <Label VerticalAlignment="Top" HorizontalAlignment="Left" Margin=" 10, 50, 0, 0" Height="30" Width="130" Grid.ColumnSpan="2">Потребителско име:</Label>
                 <Label VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 80, 0, 0" Height="30" Width="130" Grid.ColumnSpan="2">Парола:</Label>
                 <TextBox x:Name="usernameLogWIn" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,50,0,0" Height="25" Width="160" Grid.Column="1"/>
-                <TextBox x:Name="passwordLogWin" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="82,0,0,0" Height="25" Width="160" Grid.Column="1"/>
+                <!--TextBox x:Name="passwordLogWin" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="82,0,0,0" Height="25" Width="160" Grid.Column="1"/-->
+                <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="82,0,0,0" Height="25" Width="160" Grid.Column="1"/>
                 <Button x:Name="loginLogWin" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,188,10" Padding="2" Height="31" Click="loginLogWin_Click" Grid.Column="1" Width="118">Login</Button>
-
             </Grid>
         </GroupBox>
     </Grid>

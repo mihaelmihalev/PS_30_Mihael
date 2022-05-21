@@ -8,7 +8,7 @@
         Title="Студентска информационна система" Height="450" Width="800">
     <Grid  Name="MainGrid"  RenderTransformOrigin="0.716,0.048">
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Misho\Desktop\6 semestur\Programni sredi upr\PS_30_Mihael_Mihalev\StudentInfoSystem\backgroundLogin.png"/>
+            <ImageBrush ImageSource="C:\Users\test\source\repos\PS_30_Mihael\StudentInfoSystem\backgroundLogin.png"/>
         </Grid.Background>
         <GroupBox HorizontalAlignment="Right" Header="Лични данни" Grid.Row="0" Margin="0,15,10,261" Width="372" >
             <Grid Margin="10,0,-2,0">

@@ -17,7 +17,7 @@ namespace StudentInfoSystem
                 {
                     testStudents = new List<Student>();
 
-                    Student student = new Student("Petur", "Ivanov", "Petrov", "FCST", "CSE", "Bachelor", "Assured",
+                    Student student = new Student("Petur", "1234", "Ivanov", "Petrov", "FCST", "CSE", "Bachelor", "Assured",
                         "121219099",3, 9, 30);
 
                     testStudents.Add(student);
@@ -32,7 +32,7 @@ namespace StudentInfoSystem
         {
             StudentInfoContext context = new StudentInfoContext();
 
-            Student result = context.Students.SingleOrDefault(s => s.facultyNumber == facNum);
+            Student result = context.Students.SingleOrDefault(s => s.FacultyNumber == facNum);
             return result != null;
         }
     }

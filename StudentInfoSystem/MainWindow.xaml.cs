@@ -24,26 +24,28 @@ namespace StudentInfoSystem
     public partial class MainWindow : Window
 
     {
+        string textToTransfer = "";
         public StudentInfoContext context;
 
         private Student student;
         public List<string> StudStatusChoices { get; set; } = new List<string>();
+        public List<string> StudInfo { get; set; } = new List<string>();
         private Student Student
         {
             get
             {
                 student = new Student();
-                student.year = Int32.Parse(this.txtCurse.Text);
-                student.facultyNumber = this.txtFacNum.Text;
-                student.faculty = this.txtFac.Text;
-                student.flow = Int32.Parse(this.txtPotok.Text);
-                student.name = this.txtName.Text;
-                student.group = Int32.Parse(this.txtGroup.Text);
-                student.last_name = this.txtFamily.Text;
-                student.surname = this.txtSurName.Text;
-                student.major = this.txtSpec.Text;
+                student.Course = Int32.Parse(this.txtCurse.Text);
+                student.FacultyNumber = this.txtFacNum.Text;
+                student.Faculty = this.txtFac.Text;
+                student.Potok = Int32.Parse(this.txtPotok.Text);
+                student.UserName = this.txtName.Text;
+                student.Grupa = Int32.Parse(this.txtGroup.Text);
+                student.LastName = this.txtFamily.Text;
+                student.SecondName = this.txtSurName.Text;
+                student.Speciality = this.txtSpec.Text;
                 //student.status = this.txtSts.Text;
-                student.degree = this.txtOKS.Text;                             
+                student.OKS = this.txtOKS.Text;
                 return student;
             }
             set
@@ -51,28 +53,61 @@ namespace StudentInfoSystem
 
             }
         }
-       // public MainWindow(object data)
-     // : this()
-       // {
-            // Bind to expense report data.
-          //  this.DataContext = data;
+        // public MainWindow(object data)
+        // : this()
+        // {
+        // Bind to expense report data.
+        //  this.DataContext = data;
 
-       // }
-        
-        
+        // }
+
+
         public MainWindow()
 
         {
             InitializeComponent();
             //hideAllFields();
-            FillStudStatusChoices();
+            //FillStudStatusChoices();
+            // FillStudInfo();
+
             this.DataContext = DataContext;
-            this.statusListBox.ItemsSource = StudStatusChoices;
-            if (TestStudentsIfEmpty())
-                CopyTestStudents();
+
+            //  this.statusListBox.ItemsSource = StudStatusChoices;
+            //   if (TestStudentsIfEmpty())
+            //     CopyTestStudents();
 
         }
+        public MainWindow(string userName, string password)
+        {
+            InitializeComponent();
+            this.DataContext = DataContext;
+            StudentInfoContext context = new StudentInfoContext();
+            Student student = context.Students.FirstOrDefault(s => s.UserName == userName && s.Password == password);
+            if (student != null)
+            {
+                fillFieldsWithStudentInfo(student);
+            }
+        }
 
+        private void loginLogWin_Click(object sender, EventArgs e)
+        {
+            textToTransfer = txtName.Text;
+            transfer(true);
+            this.Close();
+        }
+        public string transfer(Boolean wantToTransfer) //You could also do this without the Boolean
+        {
+            if (wantToTransfer == true)
+            {
+                textToTransfer = "Succes";
+            }
+            else
+            {
+                textToTransfer = "nope";
+            }
+
+            return textToTransfer;
+        }
         private void FillStudStatusChoices()
         {
             StudStatusChoices = new List<string>();
@@ -81,7 +116,7 @@ namespace StudentInfoSystem
             {
                 string sqlquery =
                 @"SELECT StatusDescr
-                FROM StudStatus";
+FROM StudStatus";
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
                 connection.Open();
@@ -98,12 +133,37 @@ namespace StudentInfoSystem
                 }
             }
         }
+        private void FillStudInfo()
+        {
+
+            using (IDbConnection connection = new
+            SqlConnection(Properties.Settings.Default.DbConnect))
+            {
+                string sqlquery =
+                @"SELECT *
+FROM Users";
+                IDbCommand command = new SqlCommand();
+                command.Connection = connection;
+                connection.Open();
+                command.CommandText = sqlquery;
+                IDataReader reader = command.ExecuteReader();
+                bool notEndOfResult;
+                notEndOfResult = reader.Read();
+                while (notEndOfResult)
+
+                {
+                    string s = reader.GetString(0);
+                    StudInfo.Add(s);
+                    notEndOfResult = reader.Read();
+                }
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             clearAllFields();
         }
 
-       
+
 
 
         private void enableBtn_Click(object sender, RoutedEventArgs e)
@@ -144,21 +204,42 @@ namespace StudentInfoSystem
             }
         }
 
-        private void fillFieldsWithStudentInfo()
-        {
-            Student student = StudentData.TestStudents[0];
+        //private void fillFieldsWithStudentInfo()
+        //{
 
-            this.txtCurse.Text = student.year.ToString();
-            this.txtFacNum.Text = student.facultyNumber;
-            this.txtFac.Text = student.faculty;
-            this.txtPotok.Text = student.flow.ToString();
-            this.txtName.Text = student.name;
-            this.txtGroup.Text = student.group.ToString();
-            this.txtFamily.Text = student.last_name;
-            this.txtOKS.Text = student.degree;
-            this.txtSurName.Text = student.surname;
-            this.txtSpec.Text = student.major;
-            this.statusListBox.ItemsSource = student.status;
+
+        //    Student student = StudentData.TestStudents[0];
+
+        //    this.txtCurse.Text = student.Course.ToString();
+        //    this.txtFacNum.Text = student.FacultyNumber;
+        //    this.txtFac.Text = student.Faculty;
+        //    this.txtPotok.Text = student.Potok.ToString();
+        //    this.txtName.Text = student.UserName;
+        //    this.txtGroup.Text = student.Grupa.ToString();
+        //    this.txtFamily.Text = student.LastName;
+        //    this.txtOKS.Text = student.OKS;
+        //    this.txtSurName.Text = student.SecondName;
+        //    this.txtSpec.Text = student.Speciality;
+        //    //this.statusListBox.ItemsSource = student.status;
+
+        //}
+        private void fillFieldsWithStudentInfo(Student student)
+        {
+
+
+            //Student student = StudentData.TestStudents[0];
+
+            this.txtCurse.Text = student.Course.ToString();
+            this.txtFacNum.Text = student.FacultyNumber;
+            this.txtFac.Text = student.Faculty;
+            this.txtPotok.Text = student.Potok.ToString();
+            this.txtName.Text = student.UserName;
+            this.txtGroup.Text = student.Grupa.ToString();
+            this.txtFamily.Text = student.LastName;
+            this.txtOKS.Text = student.OKS;
+            this.txtSurName.Text = student.SecondName;
+            this.txtSpec.Text = student.Speciality;
+            //this.statusListBox.ItemsSource = student.status;
 
         }
 
@@ -263,17 +344,18 @@ namespace StudentInfoSystem
 
         private void showBtn_Click(object sender, RoutedEventArgs e)
         {
-            fillFieldsWithStudentInfo();
+        //    fillFieldsWithStudentInfo();
 
-            this.lblName.Visibility = Visibility.Visible;
-            this.lblSurName.Visibility = Visibility.Visible;
-            this.lblFamily.Visibility = Visibility.Visible;
-            this.txtName.Visibility = Visibility.Visible;
-            this.txtSurName.Visibility = Visibility.Visible;
-            this.txtFamily.Visibility = Visibility.Visible;
-            /*this.showBtn.Visibility = Visibility.Hidden;
-            this.showMoreBtn.Visibility = Visibility.Visible;*/
+        //    this.lblName.Visibility = Visibility.Visible;
+        //    this.lblSurName.Visibility = Visibility.Visible;
+        //    this.lblFamily.Visibility = Visibility.Visible;
+        //    this.txtName.Visibility = Visibility.Visible;
+        //    this.txtSurName.Visibility = Visibility.Visible;
+        //    this.txtFamily.Visibility = Visibility.Visible;
+        //    /*this.showBtn.Visibility = Visibility.Hidden;
+        //    this.showMoreBtn.Visibility = Visibility.Visible;*/
 
+        //
         }
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -283,7 +365,7 @@ namespace StudentInfoSystem
             User user = window.user;
             if (user != null)
             {
-                Student student = (from s in StudentData.TestStudents where s.name == user.Username select s).FirstOrDefault();
+                Student student = (from s in StudentData.TestStudents where s.UserName == user.Username select s).FirstOrDefault();
                 Student = student;
             }
 
@@ -301,7 +383,7 @@ namespace StudentInfoSystem
         private void CopyTestStudents()
         {
             StudentInfoContext context = new StudentInfoContext();
-            
+
 
             foreach (Student st in StudentData.TestStudents)
             {
@@ -320,9 +402,9 @@ namespace StudentInfoSystem
 
         private void fillBtn_Click(object sender, RoutedEventArgs e)
         {
-            fillFieldsWithStudentInfo();
+        //    fillFieldsWithStudentInfo();
         }
     }
 }
-        
-    
+
+

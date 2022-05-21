@@ -15,61 +15,67 @@ namespace StudentInfoSystem
 
         }
 
-        public Student(string name, string surname, string last_name, string faculty, string major, string degree, string status, string facultyNumber, int year, int flow, int group)
+        public Student(string name,string password, string surname, string last_name, string faculty, string major, string degree, string status, string facultyNumber, int year, int flow, int group)
         {
-            this.name = name;
-            this.surname = surname;
-            this.last_name = last_name;
-            this.faculty = faculty;
-            this.major = major;
-            this.degree = degree;
-            this.status = status;
-            this.facultyNumber = facultyNumber;
-            this.year = year;
-            this.flow = flow;
-            this.group = group;
-            this.studStatus = studStatus;
+            this.UserName = name;
+            this.SecondName = surname;
+            this.LastName = last_name;
+            this.Faculty = faculty;
+            this.Speciality = major;
+            this.OKS = degree;
+            this.Status = status;
+            this.FacultyNumber = facultyNumber;
+            this.Course = year;
+            this.Potok = flow;
+            this.Grupa = group;
+            this.Password = password;
+            //this.studStatus = studStatus;
             
         }
 
-        public DbSet<Student> Students { get; set; }
+       
 
-        public string name
+        public string UserName
+        {
+            get;
+            set;
+        }
+        public string Password
         {
             get;
             set;
         }
 
-        public string surname
+        public string SecondName
         {
             get;
             set;
         }
 
-        public string last_name
+        public string LastName
         {
             get;
             set;
         }
 
-        public string faculty
+        public string Faculty
         {
             get;
             set;
         }
-        public string major
-        {
-            get;
-            set;
-        }
-
-        public string degree
+        public string Speciality
         {
             get;
             set;
         }
 
-        public string status
+        public string OKS
+        {
+            get;
+            set;
+        }
+
+        public string Status
         {
             get;
             set;
@@ -80,25 +86,25 @@ namespace StudentInfoSystem
             set;
         }
 
-        public string facultyNumber
+        public string FacultyNumber
         {
             get;
             set;
         }
 
-        public int year
+        public int Course
         {
             get;
             set;
         }
 
-        public int flow
+        public int Potok
         {
             get;
             set;
         }
 
-        public int group
+        public int Grupa
         {
             get;
             set;
@@ -115,7 +121,7 @@ namespace StudentInfoSystem
         }
         public override string ToString() 
         { 
-            return this.name; 
+            return this.UserName.ToString(); 
         }
     }
 }

@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using UserLogin;
 using System.Web;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace StudentInfoSystem
 {
@@ -21,39 +23,70 @@ namespace StudentInfoSystem
     /// </summary>
     public partial class LoginWindow : Window
     {
-        
+       
+        public List<string> StudInfo { get; set; } = new List<string>();
+
         public User user = new User();
         public LoginWindow()
         {
             InitializeComponent();
+
+
         }
 
         private void loginLogWin_Click(object sender, RoutedEventArgs e)
         {
-            string username = this.usernameLogWIn.Text.Trim();
-            string password = this.passwordLogWin.Text.Trim();
-
-            List<User> users = UserData.TestUsers;
-     
-            user = (from u in users where u.Username == username && u.Password == password select u).FirstOrDefault();
-
-            if (user == null)
+            SqlConnection sqlcon = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=StudentInfoDatabase;Integrated Security=True");
+            string query = "Select * from Students where UserName = '" + usernameLogWIn.Text.Trim() + "' and Password = '" + passwordBox.Password.Trim() + "'";
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(query, sqlcon);
+            DataTable dtb = new DataTable();
+            dataAdapter.Fill(dtb);
+            if(dtb.Rows.Count == 1)
             {
-                MessageBox.Show("Wrong creditentials!");
+                MessageBox.Show("Logged");
+                MainWindow  window = new MainWindow(usernameLogWIn.Text.Trim(), passwordBox.Password.Trim());
+                this.Hide();
+                window.ShowDialog();
+               
+
+
+
             }
             else
             {
-                MessageBox.Show("Logged!");
-                MainWindow win = new MainWindow();
-                win.Show();
-                this.Close();
+                MessageBox.Show("Username or password is incorrect!!");
             }
+        }
+    }
+}
+
+
+        
+
+            //string username = this.usernameLogWIn.Text.Trim();
+           // string password = this.passwordBox.Password.Trim();
+
+           // List<User> users = UserData.TestUsers;
+     
+           // user = (from u in users where u.Username == username && u.Password == password select u).FirstOrDefault();
+
+            //if (user == null)
+           // {
+            //    MessageBox.Show("Wrong creditentials!");
+          //  }
+          //  else
+          //  {
+           //     MessageBox.Show("Logged!");
+           //     MainWindow win = new MainWindow();
+            //    win.Show();
+             //   this.Close();
+          //  }
           //  if (lblCaptcha.Content != txtCaptcha.Text)
             //{
                // MessageBox.Show("Wrong Captcha");
                
             //}
-        }
+        
      //   private void LoginWindow_Load(object sender, EventArgs e)
        // {
          //   Random rand = new Random();
@@ -78,7 +111,7 @@ namespace StudentInfoSystem
                         //  }
        
 
-    }
-}
+    
+
     
 
