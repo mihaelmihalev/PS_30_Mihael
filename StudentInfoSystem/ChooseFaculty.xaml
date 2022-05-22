@@ -1,0 +1,23 @@
+﻿<Window x:Class="StudentInfoSystem.ProgramWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentInfoSystem"
+        mc:Ignorable="d"
+        Title="Програма" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+
+            <Menu Height="50">
+                <MenuItem Header="Факултет" Width="85" Height="49">
+                    <MenuItem.Icon>
+                        <Image Source="C:\Users\test\source\repos\PS_30_Mihael\StudentInfoSystem\dropicn.jpg"/>
+                    </MenuItem.Icon>
+                    <MenuItem x:Name="FCST" Header="ФКСТ" Click="Program_Click1"/>
+                     <MenuItem x:Name="FMI"  Header="ФМИ" Click="Program_Click2"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -44,7 +44,7 @@ namespace StudentInfoSystem
                 student.LastName = this.txtFamily.Text;
                 student.SecondName = this.txtSurName.Text;
                 student.Speciality = this.txtSpec.Text;
-                //student.status = this.txtSts.Text;
+                student.studStatus = this.txtSts.Text;
                 student.OKS = this.txtOKS.Text;
                 return student;
             }
@@ -71,6 +71,7 @@ namespace StudentInfoSystem
             // FillStudInfo();
 
             this.DataContext = DataContext;
+
 
             //  this.statusListBox.ItemsSource = StudStatusChoices;
             //   if (TestStudentsIfEmpty())
@@ -239,6 +240,7 @@ FROM Users";
             this.txtOKS.Text = student.OKS;
             this.txtSurName.Text = student.SecondName;
             this.txtSpec.Text = student.Speciality;
+            this.txtSts.Text = student.studStatus;
             //this.statusListBox.ItemsSource = student.status;
 
         }
@@ -396,13 +398,22 @@ FROM Users";
         private void get_GradesTable(object sender, RoutedEventArgs e)
         {
             GradesWindow gradesWindow = new GradesWindow();
+            
             gradesWindow.Show();
-            this.Close();
+            
         }
 
         private void fillBtn_Click(object sender, RoutedEventArgs e)
         {
         //    fillFieldsWithStudentInfo();
+        }
+
+        private void showProgramBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ProgramWindow window = new ProgramWindow();
+            
+            window.Show();
+
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:StudentInfoSystem"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-         
+        
     </Application.Resources>
 </Application>
 

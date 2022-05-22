@@ -4,6 +4,8 @@ using System.Windows;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using UserLogin;
 
 namespace StudentInfoSystem
 {
@@ -12,6 +14,9 @@ namespace StudentInfoSystem
     /// </summary>
     public partial class GradesWindow : Window
     {
+        public List<string> StudInfo { get; set; } = new List<string>();
+        public User user = new User();
+
         StudentInfoDatabaseEntities dataEntities = new StudentInfoDatabaseEntities();
 
         public GradesWindow()
@@ -37,7 +42,7 @@ namespace StudentInfoSystem
             {
 
                 CmdString = "SELECT SubjectID,SubjectName,Grade,LastChanged FROM StudGrades";
-                
+
                 SqlCommand cmd = new SqlCommand(CmdString, con);
 
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -54,8 +59,10 @@ namespace StudentInfoSystem
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
-            window.Show();
+            this.Close();
+            MainWindow main = new MainWindow();
+            main.Show();
         }
+
     }
 }
