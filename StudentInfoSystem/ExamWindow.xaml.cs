@@ -15,33 +15,31 @@ using System.Windows.Shapes;
 namespace StudentInfoSystem
 {
     /// <summary>
-    /// Interaction logic for ProgramWindow.xaml
+    /// Interaction logic for ExamWindow.xaml
     /// </summary>
-    public partial class ProgramWindow : Window
+    public partial class ExamWindow : Window
     {
-        public ProgramWindow()
+        public ExamWindow()
         {
             InitializeComponent();
         }
-
-
         private void Program_Click1(object sender, RoutedEventArgs e)
         {
-            ProgramKSI window = new ProgramKSI();
+            ExamFKST window = new ExamFKST();
             window.Show();
             this.Hide();
         }
 
         private void Program_Click2(object sender, RoutedEventArgs e)
         {
-            ProgramFMI window = new ProgramFMI();
+            ExamFMI window = new ExamFMI();
             window.Show();
             this.Hide();
         }
 
         private void Program_Click3(object sender, RoutedEventArgs e)
         {
-            ProgramFTK window = new ProgramFTK();
+            ExamFTK window = new ExamFTK();
             window.Show();
             this.Hide();
         }

@@ -77,6 +77,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CalendarWindow.xaml.cs">
+      <DependentUpon>CalendarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamFKST.xaml.cs">
+      <DependentUpon>ExamFKST.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamFMI.xaml.cs">
+      <DependentUpon>ExamFMI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamFTK.xaml.cs">
+      <DependentUpon>ExamFTK.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExamWindow.xaml.cs">
+      <DependentUpon>ExamWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GradesWindow.xaml.cs">
       <DependentUpon>GradesWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +125,12 @@
     <Compile Include="ProgramFKST.xaml.cs">
       <DependentUpon>ProgramFKST.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProgramFMI.xaml.cs">
+      <DependentUpon>ProgramFMI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProgramFTK.xaml.cs">
+      <DependentUpon>ProgramFTK.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs" />
     <Compile Include="StudentData.cs" />
     <Compile Include="StudentInfoContext.cs" />
@@ -117,6 +138,26 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CalendarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamFKST.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamFMI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamFTK.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GradesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +183,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ProgramFKST.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgramFMI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProgramFTK.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -193,6 +242,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="user.jpg" />
+    <Resource Include="programFTK.png" />
+    <Resource Include="programFMI.png" />
     <Resource Include="programKSI.png" />
     <Resource Include="background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -205,6 +257,11 @@
     </Resource>
     <Resource Include="img.jpeg" />
     <Resource Include="dropicn.jpg" />
+    <Resource Include="akadCalendar.png" />
+    <Resource Include="examFKST.png" />
+    <Resource Include="examFMI.png" />
+    <Resource Include="examFTK.png" />
+    <Resource Include="mihael.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

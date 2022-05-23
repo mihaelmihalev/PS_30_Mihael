@@ -15,7 +15,7 @@ namespace StudentInfoSystem
 
         }
 
-        public Student(string name,string password, string surname, string last_name, string faculty, string major, string degree, string status, string facultyNumber, int year, int flow, int group)
+        public Student(string name,string password, string surname, string last_name, string faculty, string major, string degree, string status, string facultyNumber, int year,  int flow, int group)
         {
             this.UserName = name;
             this.SecondName = surname;
@@ -29,6 +29,7 @@ namespace StudentInfoSystem
             this.Potok = flow;
             this.Grupa = group;
             this.Password = password;
+            //this.Photo = photo;
             //this.studStatus = studStatus;
             
         }

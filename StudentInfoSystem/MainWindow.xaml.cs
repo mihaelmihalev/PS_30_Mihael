@@ -241,6 +241,7 @@ FROM Users";
             this.txtSurName.Text = student.SecondName;
             this.txtSpec.Text = student.Speciality;
             this.txtSts.Text = student.studStatus;
+            
             //this.statusListBox.ItemsSource = student.status;
 
         }
@@ -405,7 +406,8 @@ FROM Users";
 
         private void fillBtn_Click(object sender, RoutedEventArgs e)
         {
-        //    fillFieldsWithStudentInfo();
+            CalendarWindow window = new CalendarWindow();
+            window.Show();
         }
 
         private void showProgramBtn_Click(object sender, RoutedEventArgs e)
@@ -415,6 +417,15 @@ FROM Users";
             window.Show();
 
         }
+
+        private void showExamBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ExamWindow window = new ExamWindow();
+
+            window.Show();
+        }
+
+        
     }
 }
 
