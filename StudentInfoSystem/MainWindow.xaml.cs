@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using UserLogin;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Threading;
 
 namespace StudentInfoSystem
 {
@@ -53,30 +54,12 @@ namespace StudentInfoSystem
 
             }
         }
-        // public MainWindow(object data)
-        // : this()
-        // {
-        // Bind to expense report data.
-        //  this.DataContext = data;
-
-        // }
-
-
+        
         public MainWindow()
 
         {
             InitializeComponent();
-            //hideAllFields();
-            //FillStudStatusChoices();
-            // FillStudInfo();
-
             this.DataContext = DataContext;
-
-
-            //  this.statusListBox.ItemsSource = StudStatusChoices;
-            //   if (TestStudentsIfEmpty())
-            //     CopyTestStudents();
-
         }
         public MainWindow(string userName, string password)
         {
@@ -88,6 +71,7 @@ namespace StudentInfoSystem
             {
                 fillFieldsWithStudentInfo(student);
             }
+           
         }
 
         private void loginLogWin_Click(object sender, EventArgs e)
@@ -96,7 +80,7 @@ namespace StudentInfoSystem
             transfer(true);
             this.Close();
         }
-        public string transfer(Boolean wantToTransfer) //You could also do this without the Boolean
+        public string transfer(Boolean wantToTransfer) 
         {
             if (wantToTransfer == true)
             {
@@ -116,8 +100,7 @@ namespace StudentInfoSystem
             SqlConnection(Properties.Settings.Default.DbConnect))
             {
                 string sqlquery =
-                @"SELECT StatusDescr
-FROM StudStatus";
+                @"SELECT StatusDescr FROM StudStatus";
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
                 connection.Open();
@@ -136,13 +119,11 @@ FROM StudStatus";
         }
         private void FillStudInfo()
         {
-
-            using (IDbConnection connection = new
-            SqlConnection(Properties.Settings.Default.DbConnect))
-            {
+           using (IDbConnection connection = new
+           SqlConnection(Properties.Settings.Default.DbConnect))
+           {
                 string sqlquery =
-                @"SELECT *
-FROM Users";
+                @"SELECT * FROM Users";
                 IDbCommand command = new SqlCommand();
                 command.Connection = connection;
                 connection.Open();
@@ -204,32 +185,11 @@ FROM Users";
                 }
             }
         }
-
-        //private void fillFieldsWithStudentInfo()
-        //{
-
-
-        //    Student student = StudentData.TestStudents[0];
-
-        //    this.txtCurse.Text = student.Course.ToString();
-        //    this.txtFacNum.Text = student.FacultyNumber;
-        //    this.txtFac.Text = student.Faculty;
-        //    this.txtPotok.Text = student.Potok.ToString();
-        //    this.txtName.Text = student.UserName;
-        //    this.txtGroup.Text = student.Grupa.ToString();
-        //    this.txtFamily.Text = student.LastName;
-        //    this.txtOKS.Text = student.OKS;
-        //    this.txtSurName.Text = student.SecondName;
-        //    this.txtSpec.Text = student.Speciality;
-        //    //this.statusListBox.ItemsSource = student.status;
-
-        //}
         private void fillFieldsWithStudentInfo(Student student)
         {
 
 
             //Student student = StudentData.TestStudents[0];
-
             this.txtCurse.Text = student.Course.ToString();
             this.txtFacNum.Text = student.FacultyNumber;
             this.txtFac.Text = student.Faculty;
@@ -240,12 +200,9 @@ FROM Users";
             this.txtOKS.Text = student.OKS;
             this.txtSurName.Text = student.SecondName;
             this.txtSpec.Text = student.Speciality;
-            this.txtSts.Text = student.studStatus;
-            
+            this.txtSts.Text = student.studStatus;           
             //this.statusListBox.ItemsSource = student.status;
-
         }
-
         private void clearAllFields()
         {
             foreach (var item in MainGrid.Children)
@@ -282,8 +239,7 @@ FROM Users";
             }
 
         }
-
-        private void showMoreBtn_Click(object sender, RoutedEventArgs e)
+       private void showMoreBtn_Click(object sender, RoutedEventArgs e)
         {
             foreach (var item in MainGrid.Children)
             {
@@ -378,16 +334,13 @@ FROM Users";
         {
             StudentInfoContext context = new StudentInfoContext();
             IEnumerable<Student> queryStudents = context.Students;
-
             int countStudents = queryStudents.Count();
-
             return countStudents == 0;
         }
         private void CopyTestStudents()
         {
             StudentInfoContext context = new StudentInfoContext();
-
-
+            
             foreach (Student st in StudentData.TestStudents)
             {
                 context.Students.Add(st);

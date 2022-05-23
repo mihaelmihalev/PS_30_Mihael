@@ -60,30 +60,7 @@ namespace StudentInfoSystem
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
-            //string connection = @"Provider=Microsoft.ACE.OLEDB.12.0;Data  Source=C:\Database1.accdb";
-            //OleDbConnection connect = new OleDbConnection(connection);
-
-            //string sql = "SELECT * FROM StudGrades";
-            //connect.Open();
-            //OleDbCommand command = new OleDbCommand(sql, connect);
-            //DataSet data = new DataSet();
-            //OleDbDataAdapter adapter = new OleDbDataAdapter(command);
-
-
-            //for (int i = 0; i < data.Tables["Grades"].Rows.Count; i++)
-            //{
-            //    var gpa = data.Tables["Grades"].AsEnumerable()
-            //    .Average(row => row.Field<double>("Grade"));
-            //}
-
-            //connect.Close();
-        
-
-        //this.Close();
-        //MainWindow main = new MainWindow();
-        //main.Show();
+          
     }
 
     }

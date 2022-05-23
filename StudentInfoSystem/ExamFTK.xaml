@@ -7,15 +7,17 @@
         mc:Ignorable="d"
         Title="Изпити-факултет по телекомуникации" Height="auto" Width="auto">
     <Grid>
-        <Image HorizontalAlignment="Left" Height="919"  VerticalAlignment="Top" Width="829" Source="/examFTK.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.027"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+        <ScrollViewer>
+            <Image HorizontalAlignment="Left" Height="919"  VerticalAlignment="Top" Width="829" Source="/examFTK.png" Stretch="None" RenderTransformOrigin="0.5,0.5">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.027"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </ScrollViewer>
     </Grid>
 </Window>
